@@ -37,6 +37,14 @@ public class GamePanel extends JPanel implements ActionListener {
         newApple();
         running = true;
         startGame = true;
+        applesEaten = 0;
+        bodyParts = 6;
+        direction = 'R';
+
+        for (int i = 0; i < bodyParts; i++) {
+            x[i] = 0;
+            y[i] = 0;
+        }
         timer = new Timer(DELAY, this);
         timer.start();
     }
@@ -158,6 +166,12 @@ public class GamePanel extends JPanel implements ActionListener {
         g.setFont(new Font("Ink Free", Font.BOLD, 40));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics2.stringWidth("Score: " + applesEaten)) / 2, (g.getFont().getSize()));
+        
+        // play again insturctions
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 40));
+        FontMetrics metrics3 = getFontMetrics(g.getFont());
+        g.drawString("Press Enter to play again", (SCREEN_WIDTH - metrics3.stringWidth("Press Enter to play agian")) / 2, (SCREEN_HEIGHT / 2) + 100);
     }
 
     @Override
@@ -197,6 +211,14 @@ public class GamePanel extends JPanel implements ActionListener {
                         direction = 'D';
                     }
                     break;
+                case KeyEvent.VK_ENTER:
+                    if (!running) {
+                        System.out.println("test");
+                        startGame();
+
+
+                    }
+                    
 
             
             }
