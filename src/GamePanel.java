@@ -89,6 +89,13 @@ public class GamePanel extends JPanel implements ActionListener {
         appleX = random.nextInt((int) SCREEN_WIDTH / UNIT_SIZE) * UNIT_SIZE;
         appleY = random.nextInt((int) SCREEN_HEIGHT / UNIT_SIZE) * UNIT_SIZE;
 
+        for (int i = 0; i < bodyParts; i++) {
+            if ((x[i] == appleX) && (y[i] == appleY)) {
+                System.out.println("test");
+                newApple();
+            }
+        }
+
     }
     public void move() {
         for(int i = bodyParts; i > 0; i--) {
@@ -213,7 +220,7 @@ public class GamePanel extends JPanel implements ActionListener {
                     break;
                 case KeyEvent.VK_ENTER:
                     if (!running) {
-                        System.out.println("test");
+                        // System.out.println("test");
                         startGame();
 
 
